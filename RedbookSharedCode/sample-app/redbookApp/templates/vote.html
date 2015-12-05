@@ -1,0 +1,68 @@
+<ion-view view-title="Cast your vote" >
+  <ion-content>
+    <h1>Please vote for your favourite cuisine</h1>
+    <h5>{{message}}</h5> 
+    
+	<form class="form-horizontal" role="form" ng-init="refresh()">
+		<div class="form-group clearfix bottom-margin2-xs top-margin7-xs">
+		  <label for="name" class="col-sm-3 control-label text-right">Name</label>
+		  <div class="col-sm-8">
+		    <input type="text" ng-model="vote.name" class="form-control" id="name" placeholder="Enter Your Name" ng-required="true"/>
+		  </div>
+		</div>
+	
+		<div class="form-group clearfix bottom-margin2-xs">
+		  <label for="phone" class="col-sm-3 control-label text-right">Phone Number</label>
+		  <div class="col-sm-8">
+		    <input type="text" ng-model="vote.phone" class="form-control" id="phone" placeholder="Phone Number " ng-required="true">
+		  </div>
+		</div>
+
+		<div class="form-group clearfix bottom-margin2-xs">
+		  <label for="email" class="col-sm-3 control-label text-right">Email</label>
+		  <div class="col-sm-8">
+		    <input type="text" ng-model="vote.email" class="form-control" id="email" placeholder="Email Id" ng-required="true">
+		  </div>
+		</div>	
+			
+		<div class="form-group clearfix bottom-margin2-xs">
+		  <label for="voterChoice" class="col-sm-3 control-label text-right">Your Choice</label>
+		  <div class="col-sm-8">
+		   <div class="input-field-select-wrapper">
+		      <select class="input-field-select" ng-model="vote.voterChoice" id="voterChoice">
+		        <option>Indian</option>
+		        <option>French</option>
+		        <option>Mexican</option>
+		        <option>Turkish</option>
+		        <option>English</option>
+		        <option>Japanese</option>
+		        <option>Chinese</option>
+		        <option>Italian</option>
+		      </select>
+		    </div>
+		  </div>
+		</div>
+		
+
+		<div class="form-group clearfix bottom-margin2-xs">
+		  <div class="col-sm-offset-3 col-sm-10">
+		  <!-- 
+		    <input type="submit" class="btn btn-primary button button-positive" value="Save"/>
+		   -->
+		    <input type="submit" class="btn btn-primary " value="Vote" ng-click="addVote()"/>
+		
+		  </div>
+		</div>
+
+
+
+
+
+	</form>
+    
+    
+    
+    
+    
+  </ion-content>
+</ion-view>

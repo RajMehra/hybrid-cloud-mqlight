@@ -1,0 +1,44 @@
+{
+  "name": "smart-pay-api",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Smart Payment Swagger API Project",
+  "keywords": [
+    "mobile",
+    "payments",
+    "swagger",
+    "hackachotn",
+    "westpac"  
+  ],
+  "author": "rajmehra@au1.ibm.com",
+  "license": "",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "cfenv": "1.0.x",
+    "express": "^4.12.3",
+    "nano": "6.1.x",  	
+    "express": "^4.12.3",
+    "swagger-express-mw": "0.0.x",
+    "twilio": "",
+    "mqlight": ""
+  },
+  "devDependencies": {
+    "grunt": "^0.4.4",
+    "grunt-contrib-clean": "^0.5.0",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-nodeunit": "^0.3.3",
+    "grunt-contrib-qunit": "~0.3.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-env": "^0.4.1",
+    "grunt-shell": "^1.1.1",  	
+    "should": "^5.2.0",
+    "supertest": "^0.15.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }  
+}

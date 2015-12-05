@@ -1,0 +1,321 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Redbook Messaging/DB Sample API
+# during dev, should point to your local machine
+#host: localhost:6001
+# basePath prefixes all resource paths 
+basePath: /v1
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+
+
+
+# Start Vote DB API -----------------------
+
+  /vote/{referenceNumber}:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: votes
+    get:
+      tags:
+        - votes
+      description: Get a Vote by Reference Number
+      # used as the method name of the controller
+      operationId: getVotebyReference
+      parameters:
+        - name: referenceNumber
+          in: path
+          description: Reference Number
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/Vote"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
+  /votebyChoice/{voterChoice}:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: votes
+    get:
+      tags:
+        - votes
+      description: Get all votes for voter choice sorted by time
+      # used as the method name of the controller
+      operationId: getVotesbyChoice
+      parameters:
+        - name: voterChoice
+          in: path
+          description: Voter's Choice
+          required: true
+          type: string      
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+              # a pointer to a definition
+              $ref: "#/definitions/Vote"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"            
+            
+  /vote:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: votes
+    get:
+      tags:
+        - votes
+      description: Get all votes sorted by time
+      # used as the method name of the controller
+      operationId: getAllVotes
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+              # a pointer to a definition
+              $ref: "#/definitions/Vote"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    post:
+      tags:
+        - votes
+      description: Add a new vote
+      operationId: addVote
+      parameters:
+        - name: vote
+          in: body
+          description: Vote object to store
+          required: true
+          schema:
+            $ref: "#/definitions/Vote"
+            required:
+              - name
+              - phone
+              - email
+              - voterChoice
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Vote"
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/Vote" 
+        "405":
+          description: Invalid input
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    put:
+      tags:
+        - votes
+      description: Update a Vote
+      operationId: updateVote
+      parameters:
+        - name: referenceNumber
+          in: query
+          description: Vote Reference Number
+          required: true
+          type: string
+        - name: vote
+          in: body
+          description: Updated Vote Definition
+          schema:
+            $ref: "#/definitions/Vote"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Vote"
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/Vote" 
+        "405":
+          description: Invalid input
+        "404":
+          description: Not found
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+    delete:
+      tags:
+        - votes
+      description: Delete a Vote
+      operationId: deleteVote
+      parameters:
+        - name: referenceNumber
+          in: query
+          description: Refernece Number
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Success
+        "201":
+          description: Success
+        "404":
+          description: Not found
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+# End Vote DB --------------------------
+
+# Get Result
+
+  /result:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: results
+    get:
+      tags:
+        - results
+      description: Get Results
+      # used as the method name of the controller
+      operationId: getResults
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+              # a pointer to a definition
+              $ref: "#/definitions/Result"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+
+
+#  Send Vote 
+            
+  /sendVote:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: sendVote
+    post:
+      tags:
+        - sendVote
+      description: Publish a vote to topic
+      operationId: publishVote
+      parameters:
+        - name: publishVote
+          in: body
+          description: Publish a Vote
+          required: true
+          schema:
+            $ref: "#/definitions/Vote"
+            required:
+              - name
+              - phone
+              - email
+              - voterChoice
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Vote"
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/Vote" 
+        "405":
+          description: Invalid input
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+
+# End Send a Vote
+
+#  Record a Vote 
+            
+  /recordVote:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: recordVote
+    post:
+      tags:
+        - recordVote
+      description: Record a vote 
+      operationId: recordVote
+      parameters:
+        - name: vote
+          in: body
+          description: Record a Vote
+          required: true
+          schema:
+            $ref: "#/definitions/Vote"
+            required:
+              - name
+              - phone
+              - email
+              - voterChoice
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Vote"
+        "201":
+          description: Success
+          schema:
+            $ref: "#/definitions/Vote" 
+        "405":
+          description: Invalid input
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+
+# End Send a Vote
+
+
+# complex objects have schema definitions
+definitions:
+  Vote:
+    properties:
+      referenceNumber:
+        type: string
+      name:
+        type: string
+      phone:
+        type: string
+      email:
+        type: string
+      voterChoice:
+        type: string
+      votetimestamp:
+        type: string
+  Result:
+    properties:
+      VOTECOUNT:
+        type: number
+      VOTERCHOICE:
+        type: string
+        
+  ErrorResponse:
+    required:
+      - message
+    properties:
+      message:
+        type: string

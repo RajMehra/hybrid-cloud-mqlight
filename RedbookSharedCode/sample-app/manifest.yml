@@ -1,0 +1,15 @@
+---
+path: .
+
+env:
+  ENV: "test"
+
+  
+applications:
+- name: redbook-votes
+  memory: 256M
+  instances: 1
+  host: aaa-redbook-voting-sample-app
+  domain: mybluemix.net
+  command: npm start
+  

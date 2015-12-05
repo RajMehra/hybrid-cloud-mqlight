@@ -1,0 +1,6 @@
+{
+  "cloudant-smart-payments-api": {
+    "type": "cloudantNoSQLDB",
+    "plan": "Shared"
+  }
+}

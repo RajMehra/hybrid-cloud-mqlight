@@ -1,0 +1,53 @@
+.custom-class{
+  background-color: gray
+}
+
+.default-color{
+  background-color: red
+}
+  
+ <ion-view view-title="Voting Leader Board" ng-init="refresh()">
+   <ion-content>
+    
+
+ 
+  	  <button class="btn btn-primary" ng-click="castVote()">
+  					Cast your Vote
+		  </button>
+		    	  <button class="btn btn-primary" ng-click="refresh()">
+  					Refresh
+		  </button>
+
+    <table class="table" style="margin-top:-30px" style="background:none">
+
+      <tr>
+      	<!-- 
+        <th scope="col" style="text-align:right !important">Amount</th>
+         -->
+        <th scope="col">Voter Choice</th>
+        <th scope="col">Number of Votes</th>
+      </tr>
+
+      <tbody>
+
+        <ion-list>
+
+          <ion-item style="border:none;margin:0; height:10px;background:none">
+
+            <tr ng-repeat="result in results">
+              <td>{{result.VOTERCHOICE}}</td>
+              <td>{{result.VOTECOUNT}}</td>
+ 
+            </tr>
+		
+    		  </ion-item>
+
+        </ion-list>
+
+      </tbody>
+
+    </table>
+
+  </ion-content>
+</ion-view> 
+  

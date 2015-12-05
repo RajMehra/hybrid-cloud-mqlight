@@ -1,0 +1,32 @@
+---
+path: .
+
+env:
+  ENV: "test"
+  DBHOST: "<virtual address of the MYSQL Server>"
+  DBPORT: 3306
+  DBNAME: "mqlight"
+  DBUSER: "admin"
+  DBPASSWORD: "passw0rd"
+  TOPIC:  "redbook/vote"
+  MQHOST:  "<Cloud Host for MQ Server>"
+  MQPORT:  <Cloud Port for MQ server>
+  MQUSER:  "<User Id to connect to MQ Server>"
+  MQPASSWORD: "<Password to connect MQ server>"
+  MQSERVICE : "amqp://localhost"
+  MQUSESERVER : "CLOUD"
+  MQID : "Send001"
+  SAVEMETHOD : "DB"
+  RESULTTOPIC: "redbook/results"
+
+services:
+- MQLight-redbook
+
+applications:
+- name: redbook-MQLight-service-1
+  memory: 512M
+  instances: 1
+  host: aaa-redbook-MQLight-service-1
+  domain: mybluemix.net
+  command: npm start
+  
