@@ -71,7 +71,7 @@ angular.module('starter.controllers', ['starter.services'])
 			    $scope.serviceUrl = response.data.serviceUrl;
 			    
 			    Vote.create($scope.baseUrl, $scope.vote).then(function(data){
-					$scope.message = "Thank you for your voting " + data.data.name  + " your vote recorded at " + data.data.votetimeStamp ;
+					$scope.message = "Thank you for your vote " + data.data.name  + ", your vote recorded at " + data.data.votetimeStamp ;
 					console.log("Vote Added :", $scope.vote);
 					$scope.vote =  Vote.getNew(); 
 					
