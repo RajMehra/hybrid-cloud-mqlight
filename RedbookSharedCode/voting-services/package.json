@@ -1,14 +1,14 @@
 {
-  "name": "smart-pay-api",
+  "name": "mqlight-hybrid-cloud",
   "version": "0.0.1",
   "private": true,
-  "description": "Smart Payment Swagger API Project",
+  "description": "Hybrid Cloud MQlight Swagger API Project",
   "keywords": [
-    "mobile",
-    "payments",
+    "hybrid",
+    "cloud",
     "swagger",
-    "hackachotn",
-    "westpac"  
+    "mqlight"
+ 
   ],
   "author": "rajmehra@au1.ibm.com",
   "license": "",
@@ -20,8 +20,9 @@
     "nano": "6.1.x",  	
     "express": "^4.12.3",
     "swagger-express-mw": "0.0.x",
-    "twilio": "",
-    "mqlight": ""
+    "mqlight": "",
+    "mysql": "*",
+    "node-uuid": "*"
   },
   "devDependencies": {
     "grunt": "^0.4.4",

@@ -36,7 +36,7 @@ var latestResult = [
 
 var SUBSCRIBE_TOPIC = process.env.RESULTTOPIC || "redbook/results";
 var SUBSCRIBE_HOST = process.env.MQHOST || "<Cloud Host for MQ Server>";
-var SUBSCRIBE_PORT = process.env.MQPORT || <Cloud Port for MQ server>;
+var SUBSCRIBE_PORT = process.env.MQPORT || 5672;
 
 var SUBSCRIBE_USER = process.env.MQUSER || "<User Id to connect to MQ Server>";
 
@@ -45,7 +45,9 @@ var SUBSCRIBE_PASSWORD = process.env.MQPASSWORD || "<Password to connect MQ serv
 var SUBSCRIBE_SERVICE = process.env.MQSERVICE || "amqp://localhost";
 var SUBSCRIBE_USE = process.env.MQUSESERVER || "LOCAL";
 var SUBSCRIBE_ID = process.env.MQID ||  "recv_" + uuid.v4().substring(0, 7);
+var ENABLEENTERPRISE = process.env.ENABLEENTERPRISE || "false";
 
+/// Valid values "true" or "false"
 
 // Results only works with MQ /IIB server integration. 
 
@@ -122,7 +124,10 @@ function connectMQ() {
 	console.error('Exiting.');
 	});
 };
-	connectMQ();
+
+	if (ENABLEENTERPISE == "true") {
+		connectMQ();
+		}	
 	
 module.exports = {
   getResults: getResults
@@ -140,14 +145,16 @@ function getResults(req, res){
 //	console.log("Returing as json :" + latestResult);
 	  res.json(latestResult);
 	  
-	  console.log("Client State : " + client.state);
-	  
-	  client.stop(function (err ) {
-		  if (err) {
-			  console.log("Error Stopping " + err );
-		  }		  
-		  connectMQ();
-	  });
-	  
+
+	  if (ENABLEENTERPRISE == "true") {
+		  console.log("Client State : " + client.state);
+		  client.stop(function (err ) {
+			  if (err) {
+				  console.log("Error Stopping " + err );
+			  }		  
+			  connectMQ();
+  
+		  });
+	  }
 
 };

@@ -16,7 +16,7 @@ var uuid = require('node-uuid');
 
 var PUBLISH_TOPIC = process.env.TOPIC || "redbook/vote";
 var PUBLISH_HOST = process.env.MQHOST || "<Cloud Host for MQ Server>";
-var PUBLISH_PORT = process.env.MQPORT || <Cloud Port for MQ server>;
+var PUBLISH_PORT = process.env.MQPORT || 5672;
 var PUBLISH_USER = process.env.MQUSER || "<User Id to connect to MQ Server>";
 var PUBLISH_PASSWORD = process.env.MQPASSWORD || "<Password to connect MQ server>";
 var PUBLISH_SERVICE = process.env.MQSERVICE || "amqp://localhost";

@@ -10,7 +10,7 @@ env:
   DBPASSWORD: "passw0rd"
   TOPIC:  "redbook/vote"
   MQHOST:  "<Cloud Host for MQ Server>"
-  MQPORT:  <Cloud Port for MQ server>
+  MQPORT:  5672
   MQUSER:  "<User Id to connect to MQ Server>"
   MQPASSWORD: "<Password to connect MQ server>"
   MQSERVICE : "amqp://localhost"
@@ -18,6 +18,8 @@ env:
   MQID : "Send001"
   SAVEMETHOD : "DB"
   RESULTTOPIC: "redbook/results"
+  ENABLEENTERPRISE: "false"
+  
 
 services:
 - MQLight-redbook

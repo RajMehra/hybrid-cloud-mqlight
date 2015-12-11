@@ -50,7 +50,7 @@ var app = express();
 
 var SUBSCRIBE_TOPIC = process.env.TOPIC || "redbook/vote";
 var SUBSCRIBE_HOST = process.env.MQHOST || "<Cloud Host for MQ Server>";
-var SUBSCRIBE_PORT = process.env.MQPORT || <Cloud Port for MQ server>;
+var SUBSCRIBE_PORT = process.env.MQPORT || 5672;
 
 var SUBSCRIBE_USER = process.env.MQUSER || "<User Id to connect to MQ Server>";
 
