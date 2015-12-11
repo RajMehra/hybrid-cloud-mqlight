@@ -21,9 +21,6 @@ env:
   ENABLEENTERPRISE: "false"
   
 
-services:
-- MQLight-redbook
-
 applications:
 - name: redbook-MQLight-service-1
   memory: 512M
