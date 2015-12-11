@@ -125,7 +125,7 @@ function connectMQ() {
 	});
 };
 
-	if (ENABLEENTERPISE == "true") {
+	if (ENABLEENTERPRISE == "true") {
 		connectMQ();
 		}	
 	
